@@ -64,9 +64,15 @@
         <b-col> Capacité totale : {{ totalCapacity }} Tflops </b-col>
         <b-col> Bande passante totale : {{ totalBandwith }} Go/s </b-col>
       </b-row>
-
+  <b-form-checkbox v-model="debug" @click='debug = !debug' name="check-button" switch>
+      Debug
+    </b-form-checkbox>
 
     </b-card>
+
+    <pre v-if="debug" class="bg-dark text-light text-left">
+      {{serverList}}
+    </pre>
   </b-container>
 </template>
 
@@ -75,6 +81,7 @@ export default {
   name: "App",
   data() {
     return {
+      debug:false,
       fields: [
         {
           key: "actions",
